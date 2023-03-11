@@ -1,77 +1,181 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Mukul's Website</title>
-	<style type="text/css">
+	<title>Mukul Diwakar - Personal Website</title>
+	<style>
 		body {
-			background-image: url("https://1.bp.blogspot.com/-fDjuLKa-xTE/YKIYi7wCnmI/AAAAAAAABXs/aBxO3MbIpvQAFT3uG24fW7PR_4jfH6VeACLcBGAsYHQ/s604/%25D0%259A%25D0%25BE%25D0%25BC%25D0%25B0%25D0%25BD%25D0%25B4%25D0%25B0%2B%25E2%2584%25967.jpeg");
-			background-size: cover;
-			color: white;
 			font-family: Arial, sans-serif;
+			margin: 0;
+			padding: 0;
 		}
-		.box {
-			background-color: rgba(0,0,0,0.5);
+
+		header {
+			background: linear-gradient(to bottom, #4169E1, #87CEFA);
+			color: #fff;
 			padding: 20px;
-			margin-top: 50px;
-			border-radius: 10px;
-			max-width: 600px;
-			margin-left: auto;
-			margin-right: auto;
 			text-align: center;
 		}
+
 		h1 {
-			font-size: 60px;
-			margin-top: 0;
-			animation: colorchange 10s infinite;
+			margin: 0;
+			font-size: 48px;
+			letter-spacing: 4px;
+			text-shadow: 2px 2px #000;
 		}
+
+		main {
+			margin: 20px;
+		}
+
+		section {
+			margin: 20px 0;
+		}
+
 		h2 {
-			font-size: 30px;
-			margin-top: 20px;
-			margin-bottom: 20px;
-			animation: colorchange 10s infinite;
+			font-size: 24px;
 		}
+
 		p {
-			font-size: 20px;
-			line-height: 1.5;
+			font-size: 18px;
 		}
-		a {
-			color: #ffbb00;
-			text-decoration: none;
-			font-weight: bold;
-			transition: all 0.3s ease-in-out;
+
+		footer {
+			background-color: #eee;
+			color: #222;
+			padding: 10px;
+			text-align: center;
 		}
-		a:hover {
-			color: white;
-			background-color: #ffbb00;
-			padding: 5px 10px;
-			border-radius: 10px;
-		}
-		@keyframes colorchange {
-			0% {
-				color: red;
-			}
-			25% {
-				color: yellow;
-			}
-			50% {
-				color: green;
-			}
-			75% {
-				color: blue;
-			}
-			100% {
-				color: purple;
-			}
+
+		/* Animation */
+		#intro, #interests {
+			display: none;
 		}
 	</style>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$("#intro").fadeIn(1000);
+			$("#interests").slideDown(1000);
+		});
+	</script>
 </head>
 <body>
-	<div class="box">
+	<header>
 		<h1>Welcome to my website!</h1>
-		<h2>About Me</h2>
-		<p>My name is Mukul Diwakar. I am pursuing MSc in Chemistry and currently studying in Jaipur. I am from the beautiful state of Himachal Pradesh. My interests include AI, Bots, and Machine Learning. I enjoy watching anime and K-dramas in my free time. I am a fan of Korean pop and Japanese rock music. This website showcases my work and interests in various fields. I hope you find it informative and engaging. Feel free to explore and discover more about me and my endeavors.</p>
-		<h2>Contact Me</h2>
-		<p>Email: celestialsapien653@gmail.com</p>
-		<p>Connect with me on <a href="https://www.instagram.com/_mukul_diwakar_/" target="_blank">Instagram</a></p>
-	</div>
-</body
+	</header>
+	<main>
+		<section id="intro">
+			<h2>About Me</h2>
+			<p>My name is Mukul Diwakar and I am currently pursuing MSc in Chemistry. I am from the beautiful state of Himachal Pradesh.</p>
+		</section>
+		<section id="interests">
+			<h2>My Interests</h2>
+			<p>Some of my interests include AI Bots, and Machine Learning. In my free time, I enjoy watching anime and K-dramas. I am also a fan of Korean pop and Japanese rock music.</p>
+		</section>
+		<section id="work">
+			<h2>My Work</h2>
+			<p>This website showcases my work and interests in various fields. Feel free to explore and discover more about me and my endeavors.</p>
+			
+			<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background: linear-gradient(to bottom, #4169E1, #87CEFA);
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 26px;
+            letter-spacing: 4px;
+            text-shadow: 2px 2px #000;
+        }
+
+        main {
+            margin: 20px;
+        }
+
+        section {
+            margin: 20px 0;
+        }
+
+        h2 {
+            font-size: 24px;
+        }
+
+        p {
+            font-size: 18px;
+        }
+
+        footer {
+            background-color: #eee;
+            color: #222;
+            padding: 10px;
+            text-align: center;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 8px 12px;
+            border-radius: 5px;
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.2s ease;
+            margin: 10px;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+            font-size: 16px;
+        }
+
+        .btn-email {
+            background-color: #FF4500;
+        }
+
+        .btn-email:hover {
+            background-color: #FF6347;
+        }
+
+        .btn-instagram {
+            background-color: #8a3ab9;
+        }
+
+        .btn-instagram:hover {
+            background-color: #b247d6;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Connect With Me</h1>
+    </header>
+    <main>
+        <section>
+            <h2>Email</h2>
+            <a href="mailto:celestialsapien653@gmail.com" class="btn btn-email">Email Me</a>
+        </section>
+        <section>
+            <h2>Instagram</h2>
+            <a href="https://www.instagram.com/_mukul_diwakar_/" class="btn btn-instagram">Follow Me on Instagram</a>
+        </section>
+    </main>
+</body>
+</html>
+
+		</section>
+	</main>
+	<footer>
+		<p>© 2023 Mukul Diwakar</p>
+	</footer>
+</body>
+</html>
