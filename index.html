@@ -1,3 +1,105 @@
+<div class="widget">
+  <div class="temp">
+    <i class="temp-icon"></i>
+    <span class="temp-value"></span>
+  </div>
+  <div class="clock">
+    <i class="clock-icon"></i>
+    <span class="clock-value"></span>
+  </div>
+</div>
+
+<style>
+  .widget {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    max-width: 350px;
+    margin: 0 auto;
+    background-color: #333;
+    padding: 10px 20px;
+    border-radius: 10px;
+    color: #fff;
+    font-family: "Helvetica Neue", sans-serif;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  }
+  
+  .temp, .clock {
+    display: flex;
+    align-items: center;
+    font-size: 1.2em;
+  }
+  
+  .temp-icon, .clock-icon {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
+  
+  .temp-icon {
+    background-image: url("https://cdn-icons-png.flaticon.com/512/1047/1047972.png");
+  }
+  
+  .clock-icon {
+    background-image: url("https://cdn-icons-png.flaticon.com/512/1833/1833611.png");
+  }
+  
+  .temp-value, .clock-value {
+    font-weight: bold;
+  }
+  
+  .temp-value {
+    margin-right: 10px;
+  }
+  
+  .clock-value {
+    margin-left: 10px;
+  }
+</style>
+
+<script>
+  function updateClock() {
+    var now = new Date();
+    var hour = now.getHours();
+    var minute = now.getMinutes();
+    var second = now.getSeconds();
+    var temp = 30; // Replace with your temperature in Celsius
+    var tempElem = document.querySelector(".temp-value");
+    var clockElem = document.querySelector(".clock-value");
+    
+    // Convert 24-hour time to 12-hour time and add AM/PM suffix
+    if (hour == 0) {
+      hour = 12;
+      suffix = "AM";
+    } else if (hour < 12) {
+      suffix = "AM";
+    } else if (hour == 12) {
+      suffix = "PM";
+    } else {
+      hour = hour - 12;
+      suffix = "PM";
+    }
+    
+    // Add leading zeros to minutes and seconds if necessary
+    minute = minute < 10 ? "0" + minute : minute;
+    second = second < 10 ? "0" + second : second;
+    
+    // Update the clock element with the current time
+    clockElem.textContent = hour + ":" + minute + ":" + second + " " + suffix;
+    
+    // Update the temperature element with the current temperature
+    tempElem.textContent = temp + "°C";
+  }
+  
+  // Call the updateClock function every second
+  setInterval(updateClock, 1000);
+</script>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -172,10 +274,11 @@
 </body>
 </html>
 
+
 		</section>
 	</main>
 	<footer>
-		<p>© 2023 Mukul Diwakar</p>
+	<p>2023 Mukul Diwakar</p>
 	</footer>
 </body>
 </html>
