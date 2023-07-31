@@ -1,334 +1,398 @@
-<div class="widget">
-  <div class="temp">
-    <i class="temp-icon"></i>
-    <span class="temp-value"></span>
-  </div>
-  <div class="clock">
-    <i class="clock-icon"></i>
-    <span class="clock-value"></span>
-  </div>
-</div>
+<!DOCTYPE html>
+<html lang="en">
 
-<style>
-  .widget {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 90%;
-    max-width: 350px;
-    margin: 0 auto;
-    background-color: #333;
-    padding: 10px 20px;
-    border-radius: 10px;
-    color: #fff;
-    font-family: "Helvetica Neue", sans-serif;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-  }
-  
-  .temp, .clock {
-    display: flex;
-    align-items: center;
-    font-size: 1.2em;
-  }
-  
-  .temp-icon, .clock-icon {
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    margin-right: 5px;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-  }
-  
-  .temp-icon {
-    background-image: url("https://cdn-icons-png.flaticon.com/512/1047/1047972.png");
-  }
-  
-  .clock-icon {
-    background-image: url("https://cdn-icons-png.flaticon.com/512/1833/1833611.png");
-  }
-  
-  .temp-value, .clock-value {
-    font-weight: bold;
-  }
-  
-  .temp-value {
-    margin-right: 10px;
-  }
-  
-  .clock-value {
-    margin-left: 10px;
-  }
-</style>
-
-<script>
-  function updateClock() {
-    var now = new Date();
-    var hour = now.getHours();
-    var minute = now.getMinutes();
-    var second = now.getSeconds();
-    var temp = 30; // Replace with your temperature in Celsius
-    var tempElem = document.querySelector(".temp-value");
-    var clockElem = document.querySelector(".clock-value");
-    
-    // Convert 24-hour time to 12-hour time and add AM/PM suffix
-    if (hour == 0) {
-      hour = 12;
-      suffix = "AM";
-    } else if (hour < 12) {
-      suffix = "AM";
-    } else if (hour == 12) {
-      suffix = "PM";
-    } else {
-      hour = hour - 12;
-      suffix = "PM";
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Portfolio</title>
+  <!-- Add Bootstrap CSS CDN link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <!-- Add AOS CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+  <!-- Add your custom CSS style -->
+  <style>
+    /* Your custom CSS styles here */
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #000000;
+      color: #FFFFFF;
+      overflow: scroll; /* Ensure the body is scrollable */
     }
-    
-    // Add leading zeros to minutes and seconds if necessary
-    minute = minute < 10 ? "0" + minute : minute;
-    second = second < 10 ? "0" + second : second;
-    
-    // Update the clock element with the current time
-    clockElem.textContent = hour + ":" + minute + ":" + second + " " + suffix;
-    
-    // Update the temperature element with the current temperature
-    tempElem.textContent = temp + "°C";
-  }
-  
-  // Call the updateClock function every second
-  setInterval(updateClock, 1000);
-</script>
 
-<div style="
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #fff;
-  border-radius: 12px;
-  padding: 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  max-width: 300px;
-  margin: 0 auto;
-">
-  <div style="
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    overflow: hidden;
-    margin-right: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
-  ">
-    <img src="https://i.ibb.co/bLFDBM5/mukul-diwakar.png" alt="Mukul Diwakar" style="
+    /* Custom background animation */
+    .animated-bg {
+      background-image: linear-gradient(45deg, #ff6b6b, #556270, #ff6b6b, #556270);
+      background-size: 400% 400%;
+      animation: gradientAnimation 15s ease infinite;
+    }
+
+    @keyframes gradientAnimation {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    /* Add more styles for your animations, hover effects, etc. */
+    .box {
+      background-color: #333;
+      padding: 20px;
+      border-radius: 5px;
+      transition: transform 0.3s ease;
+    }
+
+    .box:hover {
+      transform: scale(1.05);
+    }
+
+    /* Animation for "Welcome to my website" */
+    .welcome-animation {
+      animation: fadeInUp 1s ease;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Animation for the box */
+    .box-animation {
+      animation: fadeInRight 1s ease;
+    }
+
+    @keyframes fadeInRight {
+      from {
+        opacity: 0;
+        transform: translateX(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    /* Media Queries for responsive design */
+    @media (max-width: 768px) {
+      /* Custom styles for smaller screens */
+      body {
+        font-size: 16px;
+      }
+
+      .box {
+        padding: 10px;
+      }
+
+      /* Add more responsive styles as needed */
+    }
+
+    /* Change text color for sections */
+    #about h2,
+    #about p,
+    #interests h2,
+    #interests p,
+    #work h2,
+    #work p {
+      color: #FFFFFF; /* Change the text color to white */
+    }
+
+    /* Change font color to make the text visible */
+    #about,
+    #interests,
+    #work {
+      color: #FFFFFF;
+    }
+
+    /* Semi-transparent border around text */
+    .semi-transparent-border {
+      border: 2px solid rgba(255, 255, 255, 0.2); /* Set the border color to white with 20% opacity */
+      padding: 10px;
+    }
+
+    /* Adjust video container to cover the entire screen */
+    .video-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    /* Ensure the video covers the entire container */
+    .video-container video {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center;
-    ">
-  </div>
-  <div style="
-    font-family: 'Poppins', sans-serif;
-    font-size: 14px;
-    color: #333;
-  ">
-    <h2 style="
-      font-size: 24px;
-      font-weight: bold;
-      margin: 0 0 5px 0;
-      color: #1d3557;
-      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
-    ">Mukul Diwakar</h2>
-    <a href="https://trafalgar653.github.io" style="
-      display: block;
-      margin-bottom: 10px;
-      color: #1d3557;
-      font-weight: bold;
-      text-decoration: none;
-      transition: all 0.2s ease-in-out;
-      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
-    ">trafalgar653.github.io</a>
-  </div>
-</div>
+    }
 
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Mukul Diwakar - Personal Website</title>
-	<style>
-		body {
-			font-family: Arial, sans-serif;
-			margin: 0;
-			padding: 0;
-		}
+    /* Social media buttons */
+    .social-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      margin-top: 20px;
+    }
 
-		header {
-			background: linear-gradient(to bottom, #4169E1, #87CEFA);
-			color: #fff;
-			padding: 20px;
-			text-align: center;
-		}
+    .social-button {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 60px; /* Increase the icon container size */
+      height: 80px; /* Increase the icon container size */
+      margin: 10px;
+      border-radius: 5px;
+      background-color: #FFFFFF;
+      transition: transform 0.3s ease;
+    }
 
-		h1 {
-			margin: 0;
-			font-size: 48px;
-			letter-spacing: 4px;
-			text-shadow: 2px 2px #000;
-		}
+    .social-button img {
+      width: 40px; /* Increase the icon size */
+      height: 40px; /* Increase the icon size */
+    }
 
-		main {
-			margin: 20px;
-		}
+    .social-button span {
+      font-size: 12px;
+    }
 
-		section {
-			margin: 20px 0;
-		}
+    .social-button:last-child {
+      margin-right: 0; /* Remove the right margin from the last icon */
+    }
 
-		h2 {
-			font-size: 24px;
-		}
+    .social-button:hover {
+      transform: scale(1.1);
+    }
 
-		p {
-			font-size: 18px;
-		}
-
-		footer {
-			background-color: #eee;
-			color: #222;
-			padding: 10px;
-			text-align: center;
-		}
-
-		/* Animation */
-		#intro, #interests {
-			display: none;
-		}
-	</style>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-	<script>
-		$(document).ready(function(){
-			$("#intro").fadeIn(1000);
-			$("#interests").slideDown(1000);
-		});
-	</script>
+    /* Decrease the size of the placeholder image even more */
+    .img-placeholder-smaller {
+      width: 140px;
+      height: 140px;
+    }
+  </style>
 </head>
+
 <body>
-	<header>
-		<h1>Welcome to my website!</h1>
-	</header>
-	<main>
-		<section id="intro">
-			<h2>About Me</h2>
-			<p>My name is Mukul Diwakar and I am currently pursuing MSc in Chemistry. I am from the beautiful state of Himachal Pradesh.</p>
-		</section>
-		<section id="interests">
-			<h2>My Interests</h2>
-			<p>Some of my interests include AI Bots, and Machine Learning. In my free time, I enjoy watching anime and K-dramas. I am also a fan of Korean pop and Japanese rock music.</p>
-		</section>
-		<section id="work">
-			<h2>My Work</h2>
-			<p>This website showcases my work and interests in various fields. Feel free to explore and discover more about me and my endeavors.</p>
-			
-			<!DOCTYPE html>
-<html>
-<head>
-    <title></title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="#">MUKUL</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#about" onclick="smoothScroll('#about')">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#interests" onclick="smoothScroll('#interests')">Interests</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#work" onclick="smoothScroll('#work')">Work</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#contact" onclick="smoothScroll('#contact')">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-        header {
-            background: linear-gradient(to bottom, #4169E1, #87CEFA);
-            color: #fff;
-            padding: 20px;
-            text-align: center;
-        }
+  <!-- Hero Section -->
+  <header class="hero-section animated-bg py-5">
+    <!-- Video background container -->
+    <div class="video-container">
+      <!-- Add the video background using video element -->
+      <video autoplay loop muted playsinline>
+        <source src="welcome1.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+    <div class="container text-center">
+      <!-- Animation added for "Welcome to my website" -->
+      <h1 class="display-4 welcome-animation">Welcome to my website</h1>
+    </div>
+  </header>
 
-        h1 {
-            margin: 0;
-            font-size: 26px;
-            letter-spacing: 4px;
-            text-shadow: 2px 2px #000;
-        }
+  <!-- About Section -->
+  <section id="about" class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h2 class="semi-transparent-border">About Me</h2>
+          <p class="semi-transparent-border">
+            My name is Mukul and I am a chemistry graduate. I am from Himachal Pradesh. This
+            website showcases my work and interests in various fields. Feel free to explore and discover more about
+            me and my endeavors.
+          </p>
+        </div>
+        <div class="col-md-6">
+          <!-- Add an image of yourself here -->
+          <img src="placeholder-image.gif" alt="MUKUL" class="img-fluid rounded-circle img-placeholder-smaller">
+        </div>
+      </div>
+    </div>
+  </section>
 
-        main {
-            margin: 20px;
-        }
+  <!-- Interests Section -->
+  <section id="interests" class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h2 class="semi-transparent-border">My Interests</h2>
+          <p class="semi-transparent-border">
+            Some of my interests include AI Bots, and Machine Learning. In my free time, I enjoy watching anime and K-dramas. I am
+            also a fan of Korean pop and Japanese rock music.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        section {
-            margin: 20px 0;
-        }
+  <!-- Work Section -->
+  <section id="work" class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h2 class="semi-transparent-border">My Work</h2>
+          <p class="semi-transparent-border">
+            Showcase your work here. Add project descriptions, images, and links to your projects or GitHub repository.
+          </p>
+          <div class="row">
+            <div class="col-md-4">
+              <!-- Animation added for the box -->
+              <div class="box box-animation semi-transparent-border">
+                <!-- Add your work content here -->
+                <h3>Project 1</h3>
+                <p>Here goes project details.</p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <!-- Animation added for the box -->
+              <div class="box box-animation semi-transparent-border">
+                <!-- Add your work content here -->
+                <h3>Project 2</h3>
+                <p>Here goes project details.</p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <!-- Animation added for the box -->
+              <div class="box box-animation semi-transparent-border">
+                <!-- Add your work content here -->
+                <h3>Project 3</h3>
+                <p>Here goes project details.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        h2 {
-            font-size: 24px;
-        }
+  <!-- Contact Section -->
+  <section id="contact" class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h2 class="text-center">Contact Me</h2>
+          <p class="text-center">
+            Connect with me via email or on my social media profiles:
+          </p>
+          <!-- Social media buttons -->
+          <div class="social-buttons">
+            <a href="mailto:celestialsapien653@gmail.com" class="social-button" target="_blank">
+              <img src="email-icon.gif" alt="Email">
+              <span>Email</span>
+            </a>
+            <a href="https://www.instagram.com/_mukul_diwakar/" class="social-button" target="_blank">
+              <img src="instagram-icon.gif" alt="Instagram">
+              <span>Instagram</span>
+            </a>
+            <button class="social-button" data-bs-toggle="modal" data-bs-target="#spotifyModal">
+              <img src="spotify-icon.gif" alt="Spotify">
+              <span>Spotify</span>
+            </button>
+            <!-- WhatsApp icon with link -->
+            <a href="https://api.whatsapp.com/send?phone=918580731249&text=Hello🙋‍♂️" class="social-button" target="_blank">
+              <img src="whatsapp-icon.gif" alt="WhatsApp">
+              <span>WhatsApp</span>
+            </a>
+            <!-- GitHub icon with link -->
+            <a href="https://github.com/trafalgar653" class="social-button" target="_blank">
+              <img src="github-icon.gif" alt="GitHub">
+              <span>GitHub</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        p {
-            font-size: 18px;
-        }
+  <!-- Spotify Modal -->
+  <div class="modal fade" id="spotifyModal" tabindex="-1" aria-labelledby="spotifyModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="spotifyModalLabel">Choose a Spotify Playlist</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <select id="playlistSelect" class="form-select">
+            <option value="https://open.spotify.com/playlist/29vvmwsb7TaevLJsVdMfxK?si=DLqtrWmlQKKX237yqhkbFA">Favourites</option>
+            <option value="https://open.spotify.com/playlist/3fxbKkLu1fjIWjpPMSTeXb?si=1mXwKT5qR2C9treCtbxwNA">Bollywood songs</option>
+            <option value="https://open.spotify.com/playlist/58O6vmXHCRSEwEXGaU5tYM?si=lpRnbsRyQqGDsU6FyN1dTQ">K-Pop</option>
+            <option value="https://open.spotify.com/playlist/6puCqU0OCww8LuPdolPcDj?si=ZKRRwlPIRX2iEq0PH8nviQ">J-Music</option>
+          </select>
+          <div class="spotify-container">
+            <iframe id="spotifyIframe" src="https://open.spotify.com/embed/playlist/29vvmwsb7TaevLJsVdMfxK?si=DLqtrWmlQKKX237yqhkbFA"
+              width="100%" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
-        footer {
-            background-color: #eee;
-            color: #222;
-            padding: 10px;
-            text-align: center;
-        }
+  <!-- Add Bootstrap JS CDN link (required for Bootstrap components to work) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Add AOS JS -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <!-- Initialize AOS -->
+  <script>
+    AOS.init();
+  </script>
+  <!-- Smooth scrolling function -->
+  <script>
+    function smoothScroll(target) {
+      const element = document.querySelector(target);
+      const offset = 100;
+      const bodyRect = document.body.getBoundingClientRect().top;
+      const elementRect = element.getBoundingClientRect().top;
+      const elementPosition = elementRect - bodyRect;
+      const offsetPosition = elementPosition - offset;
 
-        /* Buttons */
-        .btn {
-            display: inline-block;
-            padding: 8px 12px;
-            border-radius: 5px;
-            color: #fff;
-            text-decoration: none;
-            font-weight: bold;
-            transition: all 0.2s ease;
-            margin: 10px;
-            box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
-            font-size: 16px;
-        }
-
-        .btn-email {
-            background-color: #FF4500;
-        }
-
-        .btn-email:hover {
-            background-color: #FF6347;
-        }
-
-        .btn-instagram {
-            background-color: #8a3ab9;
-        }
-
-        .btn-instagram:hover {
-            background-color: #b247d6;
-        }
-    </style>
-</head>
-<body>
-    <header>
-        <h1>Connect With Me</h1>
-    </header>
-    <main>
-        <section>
-            <h2>Email</h2>
-            <a href="mailto:celestialsapien653@gmail.com" class="btn btn-email">Email Me</a>
-        </section>
-        <section>
-            <h2>Instagram</h2>
-            <a href="https://www.instagram.com/_mukul_diwakar_/" class="btn btn-instagram">Follow Me on Instagram</a>
-        </section>
-    </main>
+      window.scrollBy({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  </script>
 </body>
-</html>
 
-
-		</section>
-	</main>
-	<footer>
-	<p>2023 Mukul Diwakar</p>
-	</footer>
-</body>
 </html>
