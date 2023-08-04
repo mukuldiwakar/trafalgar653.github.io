@@ -184,9 +184,11 @@
 
     /* Clock widget container */
     #clock-widget-container {
-      display: none; /* Hide the widget by default */
       text-align: center;
       padding: 1em 0;
+      position: relative; /* Make the clock container a reference for positioning */
+      margin-top: 20px; /* Add some space between clock and navbar */
+      display: block; /* Set the widget to be visible by default */
     }
 
     #clock-widget-container h4 {
@@ -205,6 +207,32 @@
     .nav-link:hover {
       background-color: #555;
       border-radius: 5px;
+    }
+
+    /* Navbar hover animation */
+    .navbar-nav li:hover::before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      bottom: -5px;
+      left: 0;
+      background-color: #FFFFFF;
+    }
+
+    /* Navbar hover color */
+    .navbar-nav li:hover .nav-link {
+      color: #FFFFFF;
+    }
+
+    /* Navbar active color */
+    .navbar-nav .active .nav-link {
+      color: #FFFFFF;
+    }
+
+    /* Navbar active hover color */
+    .navbar-nav .active:hover .nav-link {
+      color: #FFFFFF;
     }
   </style>
 </head>
@@ -232,9 +260,6 @@
           <li class="nav-item">
             <a class="nav-link" href="#contact" onclick="smoothScroll('#contact')">Contact</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#" onclick="toggleClockWidget()">Time</a>
-          </li>
         </ul>
       </div>
     </div>
@@ -245,7 +270,7 @@
     <!-- GIF background container -->
     <div class="video-container">
       <!-- Add the GIF background using img element -->
-      <img src="welcome1.gif" alt="Welcome to my website" class="gif-background">
+      <img src="welcome1.jpg" alt="Welcome to my website" class="gif-background">
     </div>
     <div class="container text-center">
       <!-- Animation added for "Welcome to my website" -->
@@ -396,12 +421,6 @@
         top: offsetPosition,
         behavior: 'smooth'
       });
-    }
-
-    // Toggle clock widget visibility
-    function toggleClockWidget() {
-      const clockWidget = document.getElementById("clock-widget-container");
-      clockWidget.style.display = (clockWidget.style.display === "none") ? "block" : "none";
     }
   </script>
 </body>
